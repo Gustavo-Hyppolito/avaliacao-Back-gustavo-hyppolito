@@ -1,0 +1,48 @@
+
+--- TRECHO A ---
+router.put('/:id', AnimalController.atualizar);
+
+--- TRECHO B ---
+
+    async listar(req, res) {
+        try {
+            const resultado = await AnimalService.listarAnimais();
+            res.json(resultado);
+        } catch (erro) {
+            res.status(erro.status || 500).json({ sucesso: false, mensagem: erro.mensagem || "Erro interno" });
+        }
+    }
+
+
+--- TRECHO C ---
+
+    async delete(id) {
+        const [result] = await pool.query('DELETE FROM animal WHERE id = ?', [id]);
+        return result.affectedRows;
+    }
+
+
+--- TRECHO D ---
+
+    async cadastrarAnimal(dados) {
+        const { nome_pet, especie, raca, idade, nome_tutor, telefone_tutor } = dados;
+        if (!nome_pet || !especie || !nome_tutor || !telefone_tutor) {
+            throw { status: 400, mensagem: "Nome do pet, espécie, nome e telefone do tutor são obrigatórios" };
+        }
+        if (idade !== undefined && (typeof idade !== "number" || idade < 0)) {
+            throw { status: 400, mensagem: "Idade não pode ser negativa" };
+        }
+
+        const novoAnimal = {
+            nome_pet: nome_pet.trim(),
+            especie: especie.trim(),
+            raca: raca ? raca.trim() : null,
+            idade: idade || 0,
+            nome_tutor: nome_tutor.trim(),
+            telefone_tutor: telefone_tutor.trim()
+        };
+
+        const id = await AnimalRepository.create(novoAnimal);
+        return { sucesso: true, mensagem: "Paciente cadastrado com sucesso", id };
+    }
+
