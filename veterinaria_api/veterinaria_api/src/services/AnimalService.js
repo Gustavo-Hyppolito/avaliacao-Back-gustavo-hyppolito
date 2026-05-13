@@ -17,6 +17,7 @@ class AnimalService {
         const { nome_pet, especie, raca, idade, nome_tutor, telefone_tutor } = dados;
         if (!nome_pet || !especie || !nome_tutor || !telefone_tutor) {
             throw { status: 400, mensagem: "Nome do pet, espécie, nome e telefone do tutor são obrigatórios" };
+            console.log("nome_pet:", nome_pet, "especie:", especie, "nome_tutor:", nome_tutor, "telefone_tutor:", telefone_tutor);
         }
         if (idade !== undefined && (typeof idade !== "number" || idade < 0)) {
             throw { status: 400, mensagem: "Idade não pode ser negativa" };
