@@ -1,0 +1,35 @@
+{
+  "id_pedido": 5001,
+  "data_pedido": "12/12/2025",
+  "status": "Processando",
+  "cliente": {
+    "nome": "MAthues",
+    "email": " Mathues@gmail.com"
+  },
+  "endereco_entrega": {
+    "rua": "Rua das Flores",
+    "numero": 123,
+    "cidade": "São Paulo",
+    "cep": "04567-890"
+  },
+  "itens": [
+    {
+      "id_produto": "P001",
+      "nome_produto": "Mouse Gamer RGB",
+      "quantidade": 1,
+      "preco_unitario": 129.90
+    },
+    {
+      "id_produto": "P002",
+      "nome_produto": "Fone Gamer RGB",
+      "quantidade": 5,
+      "preco_unitario": 30.00
+    },
+    {
+      "id_produto": "P003",
+      "nome_produto": "Cadeira Gamer",
+      "quantidade": 18,
+      "preco_unitario": 1000
+    }
+  ]
+}

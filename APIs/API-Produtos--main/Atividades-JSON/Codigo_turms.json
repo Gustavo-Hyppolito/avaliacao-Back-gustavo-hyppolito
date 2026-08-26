@@ -1,0 +1,18 @@
+{
+  "codigo_turma": "TURMA-DEV-2025",
+  "periodo": "Manhã",
+  "professor": {
+    "nome": "Heitor B",
+    "area": "Desenvolvimento Back-End"
+  },
+  "alunos": [
+    {
+      "nome": "João",
+      "matricula": 10178
+    },
+    {
+      "nome": "Dutra",
+      "matricula": 10102
+    }
+  ]
+}
