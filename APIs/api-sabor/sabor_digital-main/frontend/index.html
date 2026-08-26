@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <!-- Configuração para tornar a tela responsiva em dispositivos móveis -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabor Digital - Administração</title>
+    
+    <!-- Importação da folha de estilos CSS criada -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Importação da fonte moderna 'Inter' direto do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Cabeçalho Principal (Navbar) -->
+    <header class="navbar">
+        <div class="container">
+            <h1>Sabor <span>Digital</span></h1>
+            <!-- Botão que abrirá o modal para inserir um novo produto -->
+            <button id="btn-novo-produto" class="btn primary">Novo Produto</button>
+        </div>
+    </header>
+
+    <!-- Conteúdo principal da página -->
+    <main class="container">
+        <!-- Seção da Grade de Produtos -->
+        <section class="products-section">
+            <h2>Nossos Produtos</h2>
+            
+            <!-- Esta 'div' vazia será preenchida pelo JavaScript com os cards que vêm do Banco de Dados -->
+            <div id="products-grid" class="grid">
+                <!-- Produtos serão renderizados aqui pelo JS -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal Form (A Janela Pop-up flutuante) -->
+    <!-- Começa com a classe 'hidden' para não aparecer até clicarmos no botão -->
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <!-- Botão 'X' de fechar a janela -->
+            <span class="close-btn">&times;</span>
+            
+            <!-- Título do Modal que vai mudar para "Editar Produto" dependendo da ação -->
+            <h2 id="modal-title">Cadastrar Produto</h2>
+            
+            <!-- O Formulário de cadastro/edição -->
+            <form id="product-form">
+                <!-- ID escondido (usado apenas na edição para saber qual produto atualizar) -->
+                <input type="hidden" id="produto-id">
+                
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="descricao">Descrição</label>
+                    <textarea id="descricao" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="preco">Preço (R$)</label>
+                    <!-- Campo numérico com precisão decimal (aceita centavos) -->
+                    <input type="number" step="0.01" id="preco" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="categoria">Categoria</label>
+                    <input type="text" id="categoria">
+                </div>
+                
+                <div class="form-group">
+                    <label for="imagem">Imagem</label>
+                    <!-- Campo para fazer upload (accept restringe para mostrar apenas imagens) -->
+                    <input type="file" id="imagem" accept="image/jpeg, image/png, image/jpg">
+                </div>
+                
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="disponivel" checked>
+                    <label for="disponivel">Disponível</label>
+                </div>
+                
+                <!-- Botão que aciona o evento 'submit' do formulário -->
+                <button type="submit" class="btn secondary">Salvar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Importação do arquivo de lógica JavaScript -->
+    <!-- O script deve estar no final do body para carregar depois que os elementos HTML existirem -->
+    <script src="app.js"></script>
+</body>
+</html>
